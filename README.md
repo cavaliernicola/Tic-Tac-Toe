@@ -27,7 +27,7 @@ First of all, you need Node.js installed, you can download it [here](https://nod
 1. Build the app: `npm run build`
 
 ## Try It!
-You can try this app [HERE](enchanting-arithmetic-e034c1.netlify.app)!
+You can try this app [HERE](https://enchanting-arithmetic-e034c1.netlify.app)!
 
 ![App Preview](src/assets/showcase.png)
 
