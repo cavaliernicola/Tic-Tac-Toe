@@ -213,6 +213,8 @@ const headerText = () => {
     border: none;
     color: blue;
     cursor: pointer;
+    border: 1px solid;
+    background-color: white;
   }
 }
 
