@@ -210,7 +210,6 @@ const headerText = () => {
     width: 100px;
     border-radius: 20px;
     padding: 10px;
-    border: none;
     color: blue;
     cursor: pointer;
     border: 1px solid;
