@@ -22,7 +22,7 @@ This is an application to play the famous game Tic-Tac-Toe, I used this simple p
 ## Installation
 First of all, you need Node.js installed, you can download it [here](https://nodejs.org/it/download/).
 
-1. Clone the repository: `https://github.com/cavaliernicola/Tic-Tac-Toe.git`
+1. Clone the repository: `git clone https://github.com/cavaliernicola/Tic-Tac-Toe.git`
 1. Install the dependencies: `npm install`
 1. Build the app: `npm run build`
 
