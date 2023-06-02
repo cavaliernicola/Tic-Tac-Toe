@@ -77,8 +77,8 @@ const lineClass = computed(() => {
 
   const column = [];
   // To check if the winRow is a column we need to increased each element by the lenght of the row (so we get the element right below the current one)
-  for (let i = min - props.rows; i <= max - props.rows; i += props.rows) {
-    column.push(i + props.rows)
+  for (let i = min; i <= max; i += props.rows) {
+    column.push(i)
   }
   
   // To check if element are consecutive we just need to check if winRow is equal to the range between min and max
