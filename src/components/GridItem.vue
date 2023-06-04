@@ -114,13 +114,29 @@ const headerText = () => {
   return text;
 }
 
+const borderStyle = (cell, row) => {
+  const style = {}
+  if (row === 1) {
+    style["borderTop"] = "none";
+  } else if (row === props.rows) {
+    style["borderBottom"] = "none";
+  }
+
+  if (cell === 1) {
+    style["borderLeft"] = "none";
+  } else if (cell === props.rows) {
+    style["borderRight"] = "none";
+  }
+
+  return style;
+}
 </script>
 
 <template>
   <h1 class="game-header">{{headerText()}}</h1>
   <div class="game-grid">
     <div v-for="row in rows" :key="row" class="row">
-      <div v-for="cell in rows" :key="cell" class="cell" @click="handleCellClick(cell, row)">
+      <div v-for="cell in rows" :key="cell" class="cell" :style="borderStyle(cell, row)" @click="handleCellClick(cell, row)">
         <p class="content" :class="['value-' + currentValue(cell, row)]">{{ currentValue(cell, row) }}</p>
         <div v-if="winRow.includes(getIndex(cell, row))" class="line" :class="[lineClass]"></div>
       </div>
