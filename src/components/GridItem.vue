@@ -134,17 +134,19 @@ const borderStyle = (cell, row) => {
 
 <template>
   <h1 class="game-header">{{headerText()}}</h1>
-  <div class="game-grid">
-    <div v-for="row in rows" :key="row" class="row">
-      <div v-for="cell in rows" :key="cell" class="cell" :style="borderStyle(cell, row)" @click="handleCellClick(cell, row)">
-        <p class="content" :class="['value-' + currentValue(cell, row)]">{{ currentValue(cell, row) }}</p>
-        <div v-if="winRow.includes(getIndex(cell, row))" class="line" :class="[lineClass]"></div>
+  <div class="game-container">
+    <div class="game-grid">
+      <div v-for="row in rows" :key="row" class="row">
+        <div v-for="cell in rows" :key="cell" class="cell" :style="borderStyle(cell, row)" @click="handleCellClick(cell, row)">
+          <p class="content" :class="['value-' + currentValue(cell, row)]">{{ currentValue(cell, row) }}</p>
+          <div v-if="winRow.includes(getIndex(cell, row))" class="line" :class="[lineClass]"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="action-buttons" :style="{width: `${(rows * 130)}px`}">
-    <button @click="emit('change-settings')">Change Settings</button>
-    <button @click="emit('reset-game')">Restart</button>
+    <div class="action-buttons">
+      <button @click="emit('change-settings')">Change Settings</button>
+      <button @click="emit('reset-game')">Restart</button>
+    </div>
   </div>
 </template>
 
@@ -153,84 +155,88 @@ const borderStyle = (cell, row) => {
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.game-grid {
-  margin-top: 20px;
-  position: relative;
-
- .row {
-  display: flex;
-  justify-content: center;
-
-  .cell {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    border: 1px solid black;
-    margin: 1px;
-
-    .content {
-      margin: 0 auto;
-      position: absolute;
-      font-size: 40px;
-      font-weight: bold;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-      &.value-X {
-        color: red;
-      }
-
-      &.value-O {
-        color: green;
-      }
-    }
-
-    .line {
-      position: absolute;
-      height: 3px;
-      width: 110%;
-      background-color: darkblue;
-
-      &.diagonal-1 {
-        width: 150%;
-        transform: rotate(42deg);
-      }
-
-      &.diagonal-2 {
-        width: 150%;
-        transform: rotate(138deg);
-      }
-
-      &.column {
-        transform: rotate(90deg);
-      }
-    }
-  }
-  
-  .cell::after {
-    content: "";
-    display: block;
-    padding-bottom: 90%;
-  }
- }
-}
-.action-buttons {
+.game-container {
+  width: fit-content;
   max-width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+  margin: auto;
+  .game-grid {
+    margin-top: 20px;
+    position: relative;
 
-  button {
-    width: 100px;
-    border-radius: 20px;
-    padding: 10px;
-    color: blue;
-    cursor: pointer;
-    border: 1px solid;
-    background-color: white;
+  .row {
+    display: flex;
+    justify-content: center;
+
+    .cell {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      border: 1px solid black;
+      margin: 1px;
+
+      .content {
+        margin: 0 auto;
+        position: absolute;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        &.value-X {
+          color: red;
+        }
+
+        &.value-O {
+          color: green;
+        }
+      }
+
+      .line {
+        position: absolute;
+        height: 3px;
+        width: 110%;
+        background-color: darkblue;
+
+        &.diagonal-1 {
+          width: 150%;
+          transform: rotate(42deg);
+        }
+
+        &.diagonal-2 {
+          width: 150%;
+          transform: rotate(138deg);
+        }
+
+        &.column {
+          transform: rotate(90deg);
+        }
+      }
+    }
+    
+    .cell::after {
+      content: "";
+      display: block;
+      padding-bottom: 90%;
+    }
+  }
+  }
+  .action-buttons {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 100px;
+      border-radius: 20px;
+      padding: 10px;
+      color: blue;
+      cursor: pointer;
+      border: 1px solid;
+      background-color: white;
+    }
   }
 }
-
 </style>
